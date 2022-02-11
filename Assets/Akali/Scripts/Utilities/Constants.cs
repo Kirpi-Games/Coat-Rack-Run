@@ -6,6 +6,8 @@ namespace Akali.Scripts.Utilities
         public const string SceneSample = "SampleScene";
         public const byte LayerPlayer = 10;
         public const byte LayerEnemy = 11;
+        public const byte LayerCloth = 12;
+        public const byte LayerClothStack = 13;
         
         // Player Preferences
         public const string BoolVarTrue = "true";

@@ -3,7 +3,7 @@ using Akali.Scripts.Managers;
 using Akali.Scripts.Managers.StateMachine;
 using UnityEngine;
 
-namespace Akali.Scripts
+namespace Akali.Scripts.Core
 {
     public class SwerveController : Singleton<SwerveController>
     {

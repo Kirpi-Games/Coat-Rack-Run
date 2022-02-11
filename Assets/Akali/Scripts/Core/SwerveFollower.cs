@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Akali.Scripts.Core
 {
-    public class CameraPlayerFollower : Singleton<CameraPlayerFollower>
+    public class SwerveFollower : Singleton<SwerveFollower>
     {
         private const float FollowSpeed = 0.125f;
         private Vector3 followOffset;
