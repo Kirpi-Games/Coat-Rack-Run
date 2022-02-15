@@ -10,6 +10,11 @@ public static class Extensions
         return collider.bounds.size.z + Threshold;
     }
 
+    public static Clothes GetCloth(this Collider other)
+    {
+        return other.gameObject.GetComponent<Clothes>();
+    }
+
     public static bool IsCloth(this Collider other)
     {
         return other.gameObject.layer.Equals(Constants.LayerCloth);

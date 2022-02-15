@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using System.Linq;
 using Akali.Common;
+using Akali.Scripts.Core;
 using UnityEngine;
 
 public class ClothStack : Singleton<ClothStack>
@@ -15,9 +17,14 @@ public class ClothStack : Singleton<ClothStack>
         col = gameObject.GetComponent<Collider>();
     }
 
+    private void Update()
+    {
+        LerpStack(SwerveController.Instance.transform.position.x);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.IsCloth()) AddStack(other.gameObject.GetComponent<Clothes>());
+        if (other.IsCloth()) AddStack(other.GetCloth());
     }
 
     public void AddStack(Clothes cloth)
@@ -31,23 +38,40 @@ public class ClothStack : Singleton<ClothStack>
             stack.Add(cloth);
             return;
         }
-        
-        SetLinear(cloth);
+
+        SetEndOfStack(cloth);
         cloth.SetLayer();
         stack.Add(cloth);
     }
 
     public void RemoveStack()
     {
-        
     }
 
-    private void SetLinear(Clothes cloth)
+    private void SetEndOfStack(Clothes cloth)
     {
         cloth.transform.parent = transform;
         var last = stack[stack.Count - 1].transform;
         var position = last.position;
         position.z += cloth.col.GetLength();
         cloth.transform.position = position;
+    }
+
+    private void LerpStack(float x)
+    {
+        if (stack.Count < 1) return;
+
+        var first = stack.First();
+        var localPos = first.transform.localPosition;
+        localPos.x = x;
+        first.transform.localPosition = localPos;
+
+        if (stack.Count < 2) return;
+        for (var index = 1; index < stack.Count; index++)
+        {
+            var localPosition = stack[index].transform.localPosition;
+            localPosition.x = Mathf.Lerp(localPosition.x, stack[index - 1].transform.localPosition.x, 0.375f);
+            stack[index].transform.localPosition = localPosition;
+        }
     }
 }
