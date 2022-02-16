@@ -7,6 +7,8 @@ public class Clothes : MonoBehaviour
     [HideInInspector] public Collider col;
     [HideInInspector] public ClothScript activeCloth;
 
+    public int id = -1;
+    public Vector3 startScale;
     public List<ClothScript> subClothes = new();
 
     private void Awake()
@@ -20,6 +22,7 @@ public class Clothes : MonoBehaviour
 
         UpgradeCloth();
         col = gameObject.GetComponent<Collider>();
+        startScale = transform.localScale;
     }
 
     private void OnTriggerEnter(Collider other)
