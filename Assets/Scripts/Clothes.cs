@@ -10,6 +10,8 @@ public class Clothes : MonoBehaviour
     public int id = -1;
     public Vector3 startScale;
     public List<ClothScript> subClothes = new();
+    
+    public bool IsLast => this == ClothStack.Instance.stack[ClothStack.Instance.stack.Count - 1];
 
     private void Awake()
     {
@@ -27,7 +29,7 @@ public class Clothes : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (col.IsCloth() && other.IsClothStack()) ClothStack.Instance.AddStack(this);
+        if (col.IsCloth() && other.IsClothStack()) ClothStack.Instance.AddCloth(this);
     }
 
     public void UpgradeCloth()

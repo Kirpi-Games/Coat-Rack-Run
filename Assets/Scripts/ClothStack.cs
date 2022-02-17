@@ -8,14 +8,16 @@ using UnityEngine;
 
 public class ClothStack : Singleton<ClothStack>
 {
-    public List<Clothes> stack;
+    public List<Clothes> stack = new();
+    private List<Vector2> points = new();
     private Collider col;
+    [SerializeField] private Collider cutCollider;
+
 
     private void SetColliderEnabled() => col.enabled = !col.enabled;
 
     private void Awake()
     {
-        stack = new List<Clothes>();
         col = gameObject.GetComponent<Collider>();
     }
 
@@ -26,9 +28,9 @@ public class ClothStack : Singleton<ClothStack>
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.IsCloth()) AddStack(other.GetCloth());
+        if (other.IsCloth()) AddCloth(other.GetCloth());
     }
-    
+
     private void LerpStack(float x)
     {
         if (stack.Count < 1) return;
@@ -47,9 +49,14 @@ public class ClothStack : Singleton<ClothStack>
         }
     }
 
+    private void SetClothId()
+    {
+        for (var i = 0; i < stack.Count; i++) stack[i].id = i;
+    }
+
     #region List Operations
 
-    public void AddStack(Clothes cloth)
+    public void AddCloth(Clothes cloth)
     {
         if (stack.Count < 1)
         {
@@ -58,6 +65,7 @@ public class ClothStack : Singleton<ClothStack>
             cloth.SetLayer();
             SetColliderEnabled();
             stack.Add(cloth);
+            SetClothId();
             ScaleStack();
             return;
         }
@@ -65,12 +73,8 @@ public class ClothStack : Singleton<ClothStack>
         SetEndOfStack(cloth);
         cloth.SetLayer();
         stack.Add(cloth);
+        SetClothId();
         ScaleStack();
-    }
-
-    public void RemoveStack(Clothes clothes)
-    {
-        
     }
 
     private void SetEndOfStack(Clothes cloth)
@@ -82,13 +86,67 @@ public class ClothStack : Singleton<ClothStack>
         cloth.transform.position = position;
     }
 
+    public void RemoveEndOfStack(Clothes cloth)
+    {
+        stack.Remove(cloth);
+        Destroy(cloth.gameObject);
+    }
+
+    public void CutStack(int id)
+    {
+        if (id == -1) return;
+        var deleted = stack.Where(t => t.id >= id).ToList();
+        
+        SetVirtualPoints(deleted.Count);
+        for (var i = 0; i < deleted.Count; i++)
+        {
+            var cloth = deleted[i];
+            stack.Remove(cloth);
+
+            //var target = GetRandomPointInBounds(cutCollider.bounds);
+            
+        }
+    }
+
+    private void SetVirtualPoints(int count)
+    {
+        points.Clear();
+        var sqrt = Mathf.Sqrt(count);
+        var minX = (int) cutCollider.bounds.min.x;
+        var maxX = (int) cutCollider.bounds.max.x;
+        var minZ = (int) cutCollider.bounds.min.z;
+        var maxZ = (int) cutCollider.bounds.max.z;
+        var areaX = (cutCollider.bounds.size.x) / sqrt;
+        var areaZ = (cutCollider.bounds.size.z) / sqrt;
+        for (float i = minX; i < maxX; i += areaX)
+        {
+            for (float j = minZ; j < maxZ; j += areaZ)
+            {
+                var randX = Random.Range(0, areaX / 4);
+                var randZ = Random.Range(0, areaZ / 4);
+                points.Add(new Vector2(i + randX, j + randZ));
+            }
+        }
+    }
+
+    private Vector3 GetRandomPointInBounds(Bounds bounds)
+    {
+        var range = Random.Range(0, points.Count);
+        var point = points[range];
+        points.RemoveAt(range);
+        return new Vector3(point.x,       
+            0.5f,        
+            point.y     
+        );
+    }
+
     #endregion
 
     #region Scale Operations
 
     private void ScaleStack()
     {
-        for (var i = stack.Count - 1; i >= 0 ; i--) 
+        for (var i = stack.Count - 1; i >= 0; i--)
             StartCoroutine(CorScaleStack(stack[i], i));
     }
 

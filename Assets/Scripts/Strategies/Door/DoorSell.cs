@@ -17,7 +17,7 @@ namespace Strategies.Door
 
         private void Sell(Collider other)
         {
-            ClothStack.Instance.RemoveStack(other.GetCloth());
+            ClothStack.Instance.RemoveEndOfStack(other.GetCloth());
         }
     }
 }

@@ -18,7 +18,21 @@ namespace Strategies.Obstacle
             if (type is ObstacleTypes.Rotating)
                 GameStateManager.Instance.GameStatePlaying.onExecute += Rotate;
         }
-        
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.IsClothStack())
+            {
+                if (other.GetCloth().IsLast)
+                {
+                    ClothStack.Instance.RemoveEndOfStack(other.GetCloth());
+                    return;
+                }
+                
+                ClothStack.Instance.CutStack(other.GetCloth().id);
+            }
+        }
+
         private void Rotate() => transform.Rotate(Vector3.up, -Angle * Time.deltaTime, Space.Self);
     }
 }
