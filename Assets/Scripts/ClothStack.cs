@@ -13,8 +13,7 @@ public class ClothStack : Singleton<ClothStack>
     private Collider col;
     [SerializeField] private Collider cutCollider;
 
-
-    private void SetColliderEnabled() => col.enabled = !col.enabled;
+    private void SetColliderEnabled() => col.enabled = stack.Count < 1;
 
     private void Awake()
     {
@@ -90,6 +89,7 @@ public class ClothStack : Singleton<ClothStack>
     {
         stack.Remove(cloth);
         Destroy(cloth.gameObject);
+        SetColliderEnabled();
     }
 
     public void CutStack(int id)
@@ -124,9 +124,7 @@ public class ClothStack : Singleton<ClothStack>
                 cloth.transform.parent = MovementZ.Instance.transform;
             }));
         }
-
-        if (stack.Count < 1) SetColliderEnabled();
-        
+        SetColliderEnabled();
     }
 
     private void SetVirtualPoints(int count)
