@@ -13,21 +13,21 @@ namespace Akali.Scripts.Managers
         public void LevelIsPlaying()
         {
             GameStateManager.Instance.SetGameState(GameStateManager.Instance.GameStatePlaying);
-            iOSHapticController.instance.TriggerImpactLight();
+            Taptic.Light();
             //TinySauce.OnGameStarted(PlayerPrefs.GetLevelText().ToString());
         }
 
         public void LevelIsCompleted()
         {
             GameStateManager.Instance.SetGameState(GameStateManager.Instance.GameStateComplete);
-            iOSHapticController.instance.TriggerNotificationSuccess();
+            Taptic.Success();
             //TinySauce.OnGameFinished(true, PlayerPrefs.GetMoney(), PlayerPrefs.GetLevelText().ToString());
         }
 
         public void LevelIsFail()
         {
             GameStateManager.Instance.SetGameState(GameStateManager.Instance.GameStateFail);
-            iOSHapticController.instance.TriggerNotificationError();
+            Taptic.Failure();
             //TinySauce.OnGameFinished(false, PlayerPrefs.GetMoney(), PlayerPrefs.GetLevelText().ToString());
         }
     }

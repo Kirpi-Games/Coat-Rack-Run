@@ -9,7 +9,7 @@ using UnityEngine;
 public class ClothStack : Singleton<ClothStack>
 {
     public List<Clothes> stack = new();
-    private List<Vector2> points = new();
+    private readonly List<Vector2> points = new();
     private Collider col;
     [SerializeField] private Collider cutCollider;
 
@@ -102,10 +102,31 @@ public class ClothStack : Singleton<ClothStack>
         {
             var cloth = deleted[i];
             stack.Remove(cloth);
+            cloth.id = -1;
+            cloth.SetLayer();
 
-            //var target = GetRandomPointInBounds(cutCollider.bounds);
-            
+            const float totalTime = 0.5f;
+            var target = GetRandomPointInBounds(cutCollider.bounds);
+            var distance = target - cloth.transform.position;
+            var targetX = target.x;
+            var targetZ = target.z;
+            var firstY = distance.magnitude * 0.35f;
+            var secondY = 0.5f;
+
+            var seq = DOTween.Sequence();
+            seq.Join(cloth.transform.DOMoveX(targetX, totalTime).SetEase(Ease.InOutSine));
+            seq.Join(cloth.transform.DOMoveZ(targetZ, totalTime).SetEase(Ease.InOutSine));
+            seq.Join(cloth.transform.DOMoveY(firstY, totalTime * 0.5f).SetEase(Ease.InOutSine));
+            seq.Join(cloth.transform.DOMoveY(secondY, totalTime * 0.5f).SetEase(Ease.InOutSine).SetDelay(totalTime * 0.5f));
+            seq.OnComplete((() =>
+            {
+                cloth.transform.position = target;
+                cloth.transform.parent = MovementZ.Instance.transform;
+            }));
         }
+
+        if (stack.Count < 1) SetColliderEnabled();
+        
     }
 
     private void SetVirtualPoints(int count)
@@ -153,7 +174,7 @@ public class ClothStack : Singleton<ClothStack>
     private IEnumerator CorScaleStack(Clothes cloth, int i)
     {
         if (stack.Count < 1) yield break;
-        yield return new WaitForSeconds(0.02f * (stack.Count - i));
+        yield return new WaitForSeconds(0.05f * (stack.Count - i));
         cloth.transform.DOScale(cloth.startScale * 1.5f, 0.05f).SetEase(Ease.OutQuad)
             .OnComplete(() => cloth.transform.DOScale(cloth.startScale, 0.05f)).SetEase(Ease.OutQuad);
     }
