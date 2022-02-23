@@ -165,11 +165,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5937dd127f98f47a2baf0eb16e98e81d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  group: 2
   col: {fileID: 0}
   activeCloth: {fileID: 0}
+  subClothes: []
   id: -1
   startScale: {x: 0, y: 0, z: 0}
-  subClothes: []
 --- !u!1 &4625671306144071076
 GameObject:
   m_ObjectHideFlags: 0
@@ -411,7 +412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de03273765d954f519ea89b24200c88e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 1
+  state: 1
 --- !u!1 &4625671306392297248
 GameObject:
   m_ObjectHideFlags: 0
@@ -686,7 +687,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de03273765d954f519ea89b24200c88e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 2
+  state: 2
 --- !u!1 &4625671306604071107
 GameObject:
   m_ObjectHideFlags: 0
@@ -1491,7 +1492,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de03273765d954f519ea89b24200c88e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
+  state: 0
 --- !u!1 &4625671308111025307
 GameObject:
   m_ObjectHideFlags: 0

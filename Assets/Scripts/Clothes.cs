@@ -2,14 +2,25 @@ using System.Collections.Generic;
 using Akali.Scripts.Utilities;
 using UnityEngine;
 
+public enum ClothGroup : byte
+{
+    Pyjamas,
+    Casual,
+    Cool,
+    Sport,
+    Business,
+}
+
 public class Clothes : MonoBehaviour
 {
+    public ClothGroup group;
     [HideInInspector] public Collider col;
     [HideInInspector] public ClothScript activeCloth;
-
+    [HideInInspector] public List<ClothScript> subClothes = new();
+    
     [HideInInspector] public int id = -1;
     [HideInInspector] public Vector3 startScale;
-    [HideInInspector] public List<ClothScript> subClothes = new();
+    
     
     public bool IsLast => this == ClothStack.Instance.stack[ClothStack.Instance.stack.Count - 1];
 
