@@ -96,7 +96,7 @@ public class ClothStack : Singleton<ClothStack>
     {
         if (id == -1) return;
         var deleted = stack.Where(t => t.id >= id).ToList();
-        
+
         SetVirtualPoints(deleted.Count);
         for (var i = 0; i < deleted.Count; i++)
         {
@@ -117,13 +117,15 @@ public class ClothStack : Singleton<ClothStack>
             seq.Join(cloth.transform.DOMoveX(targetX, totalTime).SetEase(Ease.InOutSine));
             seq.Join(cloth.transform.DOMoveZ(targetZ, totalTime).SetEase(Ease.InOutSine));
             seq.Join(cloth.transform.DOMoveY(firstY, totalTime * 0.5f).SetEase(Ease.InOutSine));
-            seq.Join(cloth.transform.DOMoveY(secondY, totalTime * 0.5f).SetEase(Ease.InOutSine).SetDelay(totalTime * 0.5f));
+            seq.Join(cloth.transform.DOMoveY(secondY, totalTime * 0.5f).SetEase(Ease.InOutSine)
+                .SetDelay(totalTime * 0.5f));
             seq.OnComplete((() =>
             {
                 cloth.transform.position = target;
                 cloth.transform.parent = MovementZ.Instance.transform;
             }));
         }
+
         SetColliderEnabled();
     }
 
@@ -153,9 +155,9 @@ public class ClothStack : Singleton<ClothStack>
         var range = Random.Range(0, points.Count);
         var point = points[range];
         points.RemoveAt(range);
-        return new Vector3(point.x,       
-            0.5f,        
-            point.y     
+        return new Vector3(point.x,
+            0.5f,
+            point.y
         );
     }
 
@@ -173,7 +175,8 @@ public class ClothStack : Singleton<ClothStack>
     {
         if (stack.Count < 1) yield break;
         yield return new WaitForSeconds(0.05f * (stack.Count - i));
-        cloth.transform.DOScale(cloth.startScale * 1.5f, 0.05f).SetEase(Ease.OutQuad)
+        
+        cloth.transform.DOScale(cloth.startScale * 1.2f, 0.05f).SetEase(Ease.OutQuad)
             .OnComplete(() => cloth.transform.DOScale(cloth.startScale, 0.05f)).SetEase(Ease.OutQuad);
     }
 

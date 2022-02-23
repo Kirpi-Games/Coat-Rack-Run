@@ -5,7 +5,7 @@ namespace Akali.Scripts.Core
 {
     public class SwerveFollower : Singleton<SwerveFollower>
     {
-        private const float FollowSpeed = 0.125f;
+        private const float FollowSpeed = 0.375f;
         private Vector3 followOffset;
 
         private void Start()

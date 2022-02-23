@@ -7,9 +7,9 @@ public class Clothes : MonoBehaviour
     [HideInInspector] public Collider col;
     [HideInInspector] public ClothScript activeCloth;
 
-    public int id = -1;
-    public Vector3 startScale;
-    public List<ClothScript> subClothes = new();
+    [HideInInspector] public int id = -1;
+    [HideInInspector] public Vector3 startScale;
+    [HideInInspector] public List<ClothScript> subClothes = new();
     
     public bool IsLast => this == ClothStack.Instance.stack[ClothStack.Instance.stack.Count - 1];
 
@@ -40,21 +40,21 @@ public class Clothes : MonoBehaviour
             return;
         }
         
-        if (activeCloth.type == ClothTypes.Suit) return;
-        var nextType = GetNextCloth(activeCloth.type);
-        var nextCloth = subClothes.Find(cloth => cloth.type == nextType);
+        if (activeCloth.state == ClothStates.Level2) return;
+        var nextType = GetNextCloth(activeCloth.state);
+        var nextCloth = subClothes.Find(cloth => cloth.state == nextType);
         nextCloth.gameObject.SetActive(true);
         activeCloth.gameObject.SetActive(false);
         activeCloth = nextCloth;
     }
 
-    public ClothTypes GetNextCloth(ClothTypes type)
+    public ClothStates GetNextCloth(ClothStates state)
     {
-        return type switch
+        return state switch
         {
-            ClothTypes.Casual => ClothTypes.Dress,
-            ClothTypes.Dress => ClothTypes.Suit,
-            _ => ClothTypes.Suit,
+            ClothStates.Level0 => ClothStates.Level1,
+            ClothStates.Level1 => ClothStates.Level2,
+            _ => ClothStates.Level2,
         };
     }
 
