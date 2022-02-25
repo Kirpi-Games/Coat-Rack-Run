@@ -1,13 +1,14 @@
 using UnityEngine;
 
-public enum ClothStates : byte
+public enum ClothTypes : byte
 {
-    Level0,
-    Level1,
-    Level2,
+    Pyjama,
+    Casual,
+    Business,
+    Prom,
 }
 
 public class ClothScript : MonoBehaviour
 {
-    public ClothStates state;
+    public ClothTypes type;
 }

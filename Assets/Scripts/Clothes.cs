@@ -2,26 +2,14 @@ using System.Collections.Generic;
 using Akali.Scripts.Utilities;
 using UnityEngine;
 
-public enum ClothGroup : byte
-{
-    Pyjamas,
-    Casual,
-    Cool,
-    Sport,
-    Business,
-}
-
 public class Clothes : MonoBehaviour
 {
-    public ClothGroup group;
     [HideInInspector] public Collider col;
     [HideInInspector] public ClothScript activeCloth;
     [HideInInspector] public List<ClothScript> subClothes = new();
-    
     [HideInInspector] public int id = -1;
     [HideInInspector] public Vector3 startScale;
-    
-    
+
     public bool IsLast => this == ClothStack.Instance.stack[ClothStack.Instance.stack.Count - 1];
 
     private void Awake()
@@ -50,22 +38,23 @@ public class Clothes : MonoBehaviour
             activeCloth = subClothes[0];
             return;
         }
-        
-        if (activeCloth.state == ClothStates.Level2) return;
-        var nextType = GetNextCloth(activeCloth.state);
-        var nextCloth = subClothes.Find(cloth => cloth.state == nextType);
+
+        if (activeCloth.type == ClothTypes.Prom) return;
+        var nextType = GetNextCloth(activeCloth.type);
+        var nextCloth = subClothes.Find(cloth => cloth.type == nextType);
         nextCloth.gameObject.SetActive(true);
         activeCloth.gameObject.SetActive(false);
         activeCloth = nextCloth;
     }
 
-    public ClothStates GetNextCloth(ClothStates state)
+    public ClothTypes GetNextCloth(ClothTypes type)
     {
-        return state switch
+        return type switch
         {
-            ClothStates.Level0 => ClothStates.Level1,
-            ClothStates.Level1 => ClothStates.Level2,
-            _ => ClothStates.Level2,
+            ClothTypes.Pyjama => ClothTypes.Casual,
+            ClothTypes.Casual => ClothTypes.Business,
+            ClothTypes.Business => ClothTypes.Prom,
+            _ => ClothTypes.Prom,
         };
     }
 

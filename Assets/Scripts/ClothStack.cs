@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -5,10 +6,12 @@ using Akali.Common;
 using Akali.Scripts.Core;
 using DG.Tweening;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class ClothStack : Singleton<ClothStack>
 {
     public List<Clothes> stack = new();
+    public event Action<int> LayerChanged;
     private readonly List<Vector2> points = new();
     private Collider col;
     [SerializeField] private Collider cutCollider;
@@ -62,6 +65,7 @@ public class ClothStack : Singleton<ClothStack>
             cloth.transform.parent = transform;
             cloth.transform.position = transform.position;
             cloth.SetLayer();
+            LayerChanged?.Invoke(cloth.gameObject.layer);
             SetColliderEnabled();
             stack.Add(cloth);
             SetClothId();
@@ -71,6 +75,7 @@ public class ClothStack : Singleton<ClothStack>
 
         SetEndOfStack(cloth);
         cloth.SetLayer();
+        LayerChanged?.Invoke(cloth.gameObject.layer);
         stack.Add(cloth);
         SetClothId();
         ScaleStack();
@@ -104,6 +109,7 @@ public class ClothStack : Singleton<ClothStack>
             stack.Remove(cloth);
             cloth.id = -1;
             cloth.SetLayer();
+            LayerChanged?.Invoke(cloth.gameObject.layer);
 
             const float totalTime = 0.5f;
             var target = GetRandomPointInBounds(cutCollider.bounds);
@@ -175,7 +181,7 @@ public class ClothStack : Singleton<ClothStack>
     {
         if (stack.Count < 1) yield break;
         yield return new WaitForSeconds(0.05f * (stack.Count - i));
-        
+
         cloth.transform.DOScale(cloth.startScale * 1.2f, 0.05f).SetEase(Ease.OutQuad)
             .OnComplete(() => cloth.transform.DOScale(cloth.startScale, 0.05f)).SetEase(Ease.OutQuad);
     }

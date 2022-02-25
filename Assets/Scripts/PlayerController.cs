@@ -1,9 +1,6 @@
 using Akali.Common;
+using UnityEngine;
 
 public class PlayerController : Singleton<PlayerController>
 {
-    private void Awake()
-    {
-        
-    }
 }
