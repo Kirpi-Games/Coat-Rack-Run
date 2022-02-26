@@ -12,5 +12,6 @@ namespace Strategies.Girl
     public class GirlBase : MonoBehaviour
     {
         [HideInInspector] public GirlTypes type;
+        [HideInInspector] public HairId hairId;
     }
 }

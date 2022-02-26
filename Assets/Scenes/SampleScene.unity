@@ -419,7 +419,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
   m_LocalRotation: {x: 0.21561599, y: -0.08508985, z: 0.018863963, w: 0.9725809}
-  m_LocalPosition: {x: 1.5, y: 5, z: -5}
+  m_LocalPosition: {x: 1.5, y: 5, z: -7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -784,6 +784,67 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 3}
   m_Center: {x: 0, y: 0, z: -0.5}
+--- !u!1 &1556237157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1556237158}
+  - component: {fileID: 1556237160}
+  - component: {fileID: 1556237159}
+  m_Layer: 0
+  m_Name: Girl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1556237158
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556237157}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 816475457218634007}
+  - {fileID: 6337520614714647828}
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1556237159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556237157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe55b4848e5f748fdbc6f23113781d3d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hairId: 0
+--- !u!65 &1556237160
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1556237157}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 2.4, z: 1}
+  m_Center: {x: 0, y: 1.2, z: 0}
 --- !u!1001 &2046979309
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -907,6 +968,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 816475457218634007}
+  - component: {fileID: 816475457218634008}
   m_Layer: 0
   m_Name: Naked
   m_TagString: Untagged
@@ -1036,6 +1098,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2647145815306887297}
   - component: {fileID: 2525289571777024046}
+  - component: {fileID: 2647145815306887298}
   m_Layer: 0
   m_Name: Hair5
   m_TagString: Untagged
@@ -1496,6 +1559,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2043589119745060651}
   - component: {fileID: 7609185514845104299}
+  - component: {fileID: 7609185514845104300}
   m_Layer: 0
   m_Name: Pyjama
   m_TagString: Untagged
@@ -1510,7 +1574,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8836459841141677}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -1525,9 +1589,24 @@ Transform:
   - {fileID: 2657821780870519599}
   - {fileID: 1422003361316677368}
   - {fileID: 1269565986019078539}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 1556237158}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &816475457218634008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8836459841141677}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0c74bafdde8c41219400eb9cbd0c337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  hairId: 0
+  hairs: []
 --- !u!1 &817715065175701878
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,6 +1617,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5249698120154170819}
   - component: {fileID: 1042649290898526869}
+  - component: {fileID: 5249698120154170820}
   m_Layer: 0
   m_Name: Hair4
   m_TagString: Untagged
@@ -1900,6 +1980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1422003361316677368}
   - component: {fileID: 1780028122812518118}
+  - component: {fileID: 1780028122812518119}
   m_Layer: 0
   m_Name: Hair7
   m_TagString: Untagged
@@ -2828,6 +2909,19 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.12331049, y: 0.87877023, z: 0.010160089}
     m_Extent: {x: 0.19361277, y: 0.25884056, z: 0.21166857}
   m_DirtyAABB: 0
+--- !u!114 &1780028122812518119
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1120602908698191236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e04dbff7d3c84bae9d8f4d5ddce8e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 6
 --- !u!1 &1781182996699471548
 GameObject:
   m_ObjectHideFlags: 0
@@ -2838,6 +2932,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5564679992740853128}
   - component: {fileID: 7998117857104482537}
+  - component: {fileID: 7998117857104482538}
   m_Layer: 0
   m_Name: Hair8
   m_TagString: Untagged
@@ -3177,6 +3272,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5875481099431951877}
   - component: {fileID: 1771106574372922311}
+  - component: {fileID: 5875481099431951878}
   m_Layer: 0
   m_Name: Hair3
   m_TagString: Untagged
@@ -3983,6 +4079,19 @@ Transform:
   m_Father: {fileID: 816475457218634007}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2647145815306887298
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181880326799476755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e04dbff7d3c84bae9d8f4d5ddce8e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 4
 --- !u!4 &2657821780870519599
 Transform:
   m_ObjectHideFlags: 0
@@ -4348,6 +4457,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1655096359051727840}
   - component: {fileID: 1448140383972608038}
+  - component: {fileID: 3119989489033711944}
   m_Layer: 0
   m_Name: Hair2
   m_TagString: Untagged
@@ -4355,6 +4465,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &3119989489033711944
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3119989489033711943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e04dbff7d3c84bae9d8f4d5ddce8e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
 --- !u!4 &3193118429982681326
 Transform:
   m_ObjectHideFlags: 0
@@ -4587,6 +4710,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5478006792710753688}
   - component: {fileID: 5168173072043505467}
+  - component: {fileID: 5478006792710753689}
   m_Layer: 0
   m_Name: Business
   m_TagString: Untagged
@@ -4919,6 +5043,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6513702656717827980}
   - component: {fileID: 236378485763348772}
+  - component: {fileID: 6513702656717827981}
   m_Layer: 0
   m_Name: Casual
   m_TagString: Untagged
@@ -5034,6 +5159,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8667584038817914812}
   - component: {fileID: 4846166836439201822}
+  - component: {fileID: 8667584038817914813}
   m_Layer: 0
   m_Name: Hair1
   m_TagString: Untagged
@@ -5290,6 +5416,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8666521770931134252}
   - component: {fileID: 9162854259094936293}
+  - component: {fileID: 9162854259094936294}
   m_Layer: 0
   m_Name: Hair6
   m_TagString: Untagged
@@ -6211,6 +6338,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1269565986019078539}
   - component: {fileID: 3627883289680057578}
+  - component: {fileID: 4908880774245358272}
   m_Layer: 0
   m_Name: Hair8
   m_TagString: Untagged
@@ -6218,6 +6346,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &4908880774245358272
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4908880774245358271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e04dbff7d3c84bae9d8f4d5ddce8e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 7
 --- !u!137 &4914532728499873732
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -6544,6 +6685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 949757731617044998}
   - component: {fileID: 4914532728499873732}
+  - component: {fileID: 5136326586364495889}
   m_Layer: 0
   m_Name: Hair3
   m_TagString: Untagged
@@ -6551,6 +6693,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5136326586364495889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5136326586364495888}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e04dbff7d3c84bae9d8f4d5ddce8e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 2
 --- !u!137 &5168173072043505467
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -6913,6 +7068,19 @@ Transform:
   m_Father: {fileID: 816475457218634007}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5249698120154170820
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 817715065175701878}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e04dbff7d3c84bae9d8f4d5ddce8e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 3
 --- !u!4 &5260511568796447507
 Transform:
   m_ObjectHideFlags: 0
@@ -7070,6 +7238,19 @@ Transform:
   m_Father: {fileID: 6337520614714647828}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5478006792710753689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3393578752493080111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4efbe59651c94b5990161e85cf50be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 2
 --- !u!4 &5509934588295421688
 Transform:
   m_ObjectHideFlags: 0
@@ -7321,6 +7502,19 @@ Transform:
   m_Father: {fileID: 816475457218634007}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5875481099431951878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2008663298848443411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e04dbff7d3c84bae9d8f4d5ddce8e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 2
 --- !u!1 &5895824180283889990
 GameObject:
   m_ObjectHideFlags: 0
@@ -7529,6 +7723,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5700477357285860091}
   - component: {fileID: 4905615525497621221}
+  - component: {fileID: 5992882738563572104}
   m_Layer: 0
   m_Name: Hair7
   m_TagString: Untagged
@@ -7536,6 +7731,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &5992882738563572104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5992882738563572103}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e04dbff7d3c84bae9d8f4d5ddce8e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 6
 --- !u!4 &6010479305063668044
 Transform:
   m_ObjectHideFlags: 0
@@ -7847,7 +8055,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6681289915629076398}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -7865,8 +8073,8 @@ Transform:
   - {fileID: 8666521770931134252}
   - {fileID: 5700477357285860091}
   - {fileID: 5564679992740853128}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 1556237158}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6340728479752338805
 GameObject:
@@ -7878,6 +8086,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1476474591903482304}
   - component: {fileID: 5971752697799284374}
+  - component: {fileID: 6340728479752338806}
   m_Layer: 0
   m_Name: Hair4
   m_TagString: Untagged
@@ -7885,6 +8094,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6340728479752338806
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6340728479752338805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e04dbff7d3c84bae9d8f4d5ddce8e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 3
 --- !u!4 &6359346161201964084
 Transform:
   m_ObjectHideFlags: 0
@@ -8029,6 +8251,19 @@ Transform:
   m_Father: {fileID: 6337520614714647828}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6513702656717827981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3748428923328102696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4efbe59651c94b5990161e85cf50be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 1
 --- !u!4 &6563146169254363477
 Transform:
   m_ObjectHideFlags: 0
@@ -8134,6 +8369,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6337520614714647828}
+  - component: {fileID: 6681289915629076399}
   m_Layer: 0
   m_Name: Dressed
   m_TagString: Untagged
@@ -8141,6 +8377,22 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &6681289915629076399
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6681289915629076398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10542c599f49849a890441d21e2a28bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  hairId: 0
+  girlCloths: []
+  hairs: []
 --- !u!4 &6762592770559689343
 Transform:
   m_ObjectHideFlags: 0
@@ -8199,6 +8451,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8654612718614488194}
   - component: {fileID: 9199851343024215085}
+  - component: {fileID: 9199851343024215086}
   m_Layer: 0
   m_Name: Hair5
   m_TagString: Untagged
@@ -8765,6 +9018,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2657821780870519599}
   - component: {fileID: 2562317389410082534}
+  - component: {fileID: 7360152122300811823}
   m_Layer: 0
   m_Name: Hair6
   m_TagString: Untagged
@@ -8772,6 +9026,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7360152122300811823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7360152122300811822}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e04dbff7d3c84bae9d8f4d5ddce8e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 5
 --- !u!1 &7368632435401147907
 GameObject:
   m_ObjectHideFlags: 0
@@ -8909,6 +9176,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2661241122378554303}
   - component: {fileID: 2298764894916574237}
+  - component: {fileID: 7608975393922973208}
   m_Layer: 0
   m_Name: Hair1
   m_TagString: Untagged
@@ -8916,6 +9184,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &7608975393922973208
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7608975393922973207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e04dbff7d3c84bae9d8f4d5ddce8e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
 --- !u!137 &7609185514845104299
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -9052,6 +9333,19 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000023748726, y: -0.0031910497, z: -0.00027047237}
     m_Extent: {x: 0.0124510415, y: 0.01391728, z: 0.002891606}
   m_DirtyAABB: 0
+--- !u!114 &7609185514845104300
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 808678378662925603}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4efbe59651c94b5990161e85cf50be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!1 &7666641615050185941
 GameObject:
   m_ObjectHideFlags: 0
@@ -9440,6 +9734,19 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.000026622438, y: 0.008581138, z: -0.00027331105}
     m_Extent: {x: 0.0016586715, y: 0.002963407, z: 0.002887077}
   m_DirtyAABB: 0
+--- !u!114 &7998117857104482538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1781182996699471548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e04dbff7d3c84bae9d8f4d5ddce8e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 7
 --- !u!4 &8012614821413358227
 Transform:
   m_ObjectHideFlags: 0
@@ -9545,6 +9852,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8016254160112648222}
   - component: {fileID: 9128531498646650731}
+  - component: {fileID: 9128531498646650732}
   m_Layer: 0
   m_Name: Prom
   m_TagString: Untagged
@@ -9900,6 +10208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5359217788974880739}
   - component: {fileID: 5241914471689653285}
+  - component: {fileID: 8641207676217447749}
   m_Layer: 0
   m_Name: Hair2
   m_TagString: Untagged
@@ -9907,6 +10216,19 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &8641207676217447749
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8641207676217447748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e04dbff7d3c84bae9d8f4d5ddce8e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 1
 --- !u!4 &8654612718614488194
 Transform:
   m_ObjectHideFlags: 0
@@ -9952,6 +10274,19 @@ Transform:
   m_Father: {fileID: 6337520614714647828}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8667584038817914813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3836877488905533972}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e04dbff7d3c84bae9d8f4d5ddce8e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0
 --- !u!4 &8683903119325401174
 Transform:
   m_ObjectHideFlags: 0
@@ -10359,6 +10694,19 @@ SkinnedMeshRenderer:
     m_Center: {x: -0.000000023748726, y: -0.0032230187, z: -0.00035645568}
     m_Extent: {x: 0.012451047, y: 0.013949232, z: 0.004097417}
   m_DirtyAABB: 0
+--- !u!114 &9128531498646650732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8229663444740273142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e4efbe59651c94b5990161e85cf50be8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 3
 --- !u!1 &9145632208811748694
 GameObject:
   m_ObjectHideFlags: 0
@@ -10510,6 +10858,19 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.000009504496, y: 0.008017244, z: -0.00034377398}
     m_Extent: {x: 0.0014029746, y: 0.003913788, z: 0.0029899222}
   m_DirtyAABB: 0
+--- !u!114 &9162854259094936294
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4216304033017400877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e04dbff7d3c84bae9d8f4d5ddce8e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 5
 --- !u!4 &9192104297878862726
 Transform:
   m_ObjectHideFlags: 0
@@ -10660,3 +11021,16 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00005437259, y: 0.0075169075, z: -0.0010404873}
     m_Extent: {x: 0.0014434153, y: 0.004530173, z: 0.0031520727}
   m_DirtyAABB: 0
+--- !u!114 &9199851343024215086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6782977667942353936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e04dbff7d3c84bae9d8f4d5ddce8e06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 4
