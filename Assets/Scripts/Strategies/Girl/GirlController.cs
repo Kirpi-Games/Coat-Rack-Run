@@ -7,6 +7,7 @@ namespace Strategies.Girl
     public class GirlController : MonoBehaviour
     {
         public HairId hairId;
+        public NakedState state;
 
         private GirlNaked naked;
         private GirlDressed dressed;

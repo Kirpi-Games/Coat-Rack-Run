@@ -3,6 +3,12 @@ using UnityEngine;
 
 namespace Strategies.Girl
 {
+    public enum NakedState : byte
+    {
+        Fixed,
+        Moved,
+    }
+    
     public class GirlNaked : GirlBase
     {
         [HideInInspector] public List<Hairs> hairs = new();
