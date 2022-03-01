@@ -3,12 +3,6 @@ using UnityEngine;
 
 namespace Strategies.Girl
 {
-    public enum NakedState : byte
-    {
-        Fixed,
-        Moved,
-    }
-    
     public class GirlNaked : GirlBase
     {
         [HideInInspector] public List<Hairs> hairs = new();
@@ -16,6 +10,7 @@ namespace Strategies.Girl
         private void Awake()
         {
             type = GirlTypes.Naked;
+            animator = gameObject.GetComponent<Animator>();
             gameObject.GetComponentsInChildren(hairs);
         }
 

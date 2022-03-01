@@ -11,6 +11,7 @@ namespace Strategies.Girl
         private void Awake()
         {
             type = GirlTypes.Dressed;
+            animator = gameObject.GetComponent<Animator>();
             gameObject.GetComponentsInChildren(girlCloths);
             gameObject.GetComponentsInChildren(hairs);
         }

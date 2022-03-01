@@ -4,8 +4,7 @@ namespace Akali.Scripts.Utilities
     {
         // Scene and Layers
         public const string SceneSample = "SampleScene";
-        public const byte LayerPlayer = 10;
-        public const byte LayerEnemy = 11;
+        public const byte LayerMoved = 10;
         public const byte LayerCloth = 12;
         public const byte LayerClothStack = 13;
         
