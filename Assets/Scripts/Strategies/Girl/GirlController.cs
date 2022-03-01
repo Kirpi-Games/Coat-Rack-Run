@@ -50,7 +50,7 @@ namespace Strategies.Girl
                 return;
             }
             
-            SetGirlAnim();
+            SetGirlAnim(true);
         }
 
         public void SetActiveDressed(ClothTypes type)
