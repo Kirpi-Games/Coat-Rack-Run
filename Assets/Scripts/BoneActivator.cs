@@ -1,4 +1,3 @@
-using Akali.Scripts.Utilities;
 using UnityEngine;
 
 public class BoneActivator : MonoBehaviour
@@ -8,18 +7,11 @@ public class BoneActivator : MonoBehaviour
     private void Awake()
     {
         bone = gameObject.GetComponent<DynamicBone>();
-        bone.enabled = false;
-        ClothStack.Instance.LayerChanged += ActivateDynamicBone;
+        bone.enabled = false; 
     }
 
-    private void ActivateDynamicBone(int layer)
+    public void SetDynamicBone(bool value)
     {
-        if (layer == Constants.LayerCloth)
-        {
-            bone.enabled = false;
-            return;
-        }
-
-        bone.enabled = true;
+        bone.enabled = value;
     }
 }

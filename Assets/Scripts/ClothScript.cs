@@ -11,4 +11,5 @@ public enum ClothTypes : byte
 public class ClothScript : MonoBehaviour
 {
     public ClothTypes type;
+    public BoneActivator boneActivator;
 }

@@ -11,7 +11,6 @@ using Random = UnityEngine.Random;
 public class ClothStack : Singleton<ClothStack>
 {
     public List<Clothes> stack = new();
-    public event Action<int> LayerChanged;
     private readonly List<Vector2> points = new();
     private Collider col;
     [SerializeField] private Collider cutCollider;
@@ -35,8 +34,15 @@ public class ClothStack : Singleton<ClothStack>
 
     private void LerpStack(float x)
     {
-        if (stack.Count < 1) return;
+        if (stack.Count < 1)
+        {
+            var localPos0 = transform.localPosition;
+            localPos0.x = x;
+            transform.localPosition = localPos0;
+            return;
+        }
 
+        transform.localPosition = new Vector3(0,0,2);
         var first = stack.First();
         var localPos = first.transform.localPosition;
         localPos.x = x;
@@ -65,7 +71,6 @@ public class ClothStack : Singleton<ClothStack>
             cloth.transform.parent = transform;
             cloth.transform.position = transform.position;
             cloth.SetLayer();
-            LayerChanged?.Invoke(cloth.gameObject.layer);
             SetColliderEnabled();
             stack.Add(cloth);
             SetClothId();
@@ -75,7 +80,6 @@ public class ClothStack : Singleton<ClothStack>
 
         SetEndOfStack(cloth);
         cloth.SetLayer();
-        LayerChanged?.Invoke(cloth.gameObject.layer);
         stack.Add(cloth);
         SetClothId();
         ScaleStack();
@@ -109,7 +113,6 @@ public class ClothStack : Singleton<ClothStack>
             stack.Remove(cloth);
             cloth.id = -1;
             cloth.SetLayer();
-            LayerChanged?.Invoke(cloth.gameObject.layer);
 
             const float totalTime = 0.5f;
             var target = GetRandomPointInBounds(cutCollider.bounds);

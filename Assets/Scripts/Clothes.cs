@@ -63,9 +63,11 @@ public class Clothes : MonoBehaviour
         if (col.IsCloth())
         {
             gameObject.layer = Constants.LayerClothStack;
+            activeCloth.boneActivator.SetDynamicBone(true);
             return;
         }
 
         gameObject.layer = Constants.LayerCloth;
+        activeCloth.boneActivator.SetDynamicBone(false);
     }
 }

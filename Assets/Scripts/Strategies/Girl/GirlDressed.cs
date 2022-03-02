@@ -20,8 +20,8 @@ namespace Strategies.Girl
         {
             for (var i = 0; i < girlCloths.Count; i++)
             {
-                if (girlCloths[i].type == clothType) return;
-                girlCloths[i].gameObject.SetActive(false);
+                if (girlCloths[i].type != clothType) 
+                    girlCloths[i].gameObject.SetActive(false);
             }
         }
 
@@ -29,8 +29,8 @@ namespace Strategies.Girl
         {
             for (var i = 0; i < hairs.Count; i++)
             {
-                if (hairs[i].id == hairId) return;
-                hairs[i].gameObject.SetActive(false);
+                if (hairs[i].id != hairId)
+                    hairs[i].gameObject.SetActive(false);
             }
         }
     }

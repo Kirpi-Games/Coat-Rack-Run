@@ -33,6 +33,7 @@ namespace Strategies.Girl
             {
                 col.enabled = false;
                 SetActiveDressed(other.GetCloth().activeCloth.type);
+                ClothStack.Instance.RemoveEndOfStack(other.GetCloth());
             }
         }
 

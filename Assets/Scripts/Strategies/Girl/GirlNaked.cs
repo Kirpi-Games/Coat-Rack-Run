@@ -18,8 +18,8 @@ namespace Strategies.Girl
         {
             for (var i = 0; i < hairs.Count; i++)
             {
-                if (hairs[i].id == hairId) return;
-                hairs[i].gameObject.SetActive(false);
+                if (hairs[i].id != hairId)
+                    hairs[i].gameObject.SetActive(false);
             }
         }
     }

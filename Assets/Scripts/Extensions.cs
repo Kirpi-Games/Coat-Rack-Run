@@ -3,7 +3,7 @@ using UnityEngine;
 
 public static class Extensions
 {
-    private const float Threshold = .1f;
+    private const float Threshold = 0.5f;
     
     public static float GetLength(this Collider collider)
     {
