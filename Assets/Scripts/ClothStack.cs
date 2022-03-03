@@ -4,12 +4,15 @@ using System.Collections.Generic;
 using System.Linq;
 using Akali.Common;
 using Akali.Scripts.Core;
+using Akali.Scripts.Utilities;
 using DG.Tweening;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class ClothStack : Singleton<ClothStack>
 {
+    public event Action<int> ConsumeStack;
+    
     public List<Clothes> stack = new();
     private readonly List<Vector2> points = new();
     private Collider col;
@@ -19,6 +22,7 @@ public class ClothStack : Singleton<ClothStack>
 
     private void Awake()
     {
+        gameObject.layer = Constants.LayerClothStack;
         col = gameObject.GetComponent<Collider>();
     }
 
@@ -99,6 +103,8 @@ public class ClothStack : Singleton<ClothStack>
         stack.Remove(cloth);
         Destroy(cloth.gameObject);
         SetColliderEnabled();
+
+        if (EndgameController.Instance.endgameStart) OnConsumeStack(stack.Count);
     }
 
     public void CutStack(int id)
@@ -190,4 +196,10 @@ public class ClothStack : Singleton<ClothStack>
     }
 
     #endregion
+
+    public void OnConsumeStack(int stackCount)
+    {
+        stack[stackCount].transform.DOKill();
+        ConsumeStack?.Invoke(stackCount);
+    }
 }

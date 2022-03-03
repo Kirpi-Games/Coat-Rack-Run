@@ -33,7 +33,14 @@ namespace Strategies.Girl
             {
                 col.enabled = false;
                 SetActiveDressed(other.GetCloth().activeCloth.type);
-                ClothStack.Instance.RemoveEndOfStack(other.GetCloth());
+
+                if (other.GetCloth().IsLast)
+                {
+                    ClothStack.Instance.RemoveEndOfStack(other.GetCloth());
+                    return;
+                }
+
+                ClothStack.Instance.CutStack(other.GetCloth().id);
             }
         }
 
@@ -50,7 +57,7 @@ namespace Strategies.Girl
                 naked.GirlSadWalkAnim();
                 return;
             }
-            
+
             SetGirlAnim(true);
         }
 

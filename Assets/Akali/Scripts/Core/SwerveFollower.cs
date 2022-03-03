@@ -1,3 +1,4 @@
+using System;
 using Akali.Common;
 using UnityEngine;
 
@@ -7,6 +8,19 @@ namespace Akali.Scripts.Core
     {
         private const float FollowSpeed = 0.375f;
         private Vector3 followOffset;
+
+        private void Awake()
+        {
+            EndgameController.Instance.Sell += MoveCameraFromZ;
+        }
+
+        private void MoveCameraFromZ()
+        {
+            var followPosition = Mathf.Lerp(transform.position.z, transform.position.z - 2, 1f);
+            var position = transform.position;
+            position.z = followPosition;
+            transform.position = position;
+        }
 
         private void Start()
         {

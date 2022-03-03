@@ -45,6 +45,7 @@ public class Clothes : MonoBehaviour
         nextCloth.gameObject.SetActive(true);
         activeCloth.gameObject.SetActive(false);
         activeCloth = nextCloth;
+        activeCloth.boneActivator.SetDynamicBone(true);
     }
 
     public ClothTypes GetNextCloth(ClothTypes type)
