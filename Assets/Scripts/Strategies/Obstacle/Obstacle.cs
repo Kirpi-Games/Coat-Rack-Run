@@ -21,7 +21,7 @@ namespace Strategies.Obstacle
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.IsClothStack())
+            if (other.IsClothStack() && (other.GetCloth() != null))
             {
                 if (other.GetCloth().IsLast)
                 {
@@ -33,6 +33,6 @@ namespace Strategies.Obstacle
             }
         }
 
-        private void Rotate() => transform.Rotate(Vector3.up, -Angle * Time.deltaTime, Space.Self);
+        private void Rotate() => transform.parent.Rotate(Vector3.up, -Angle * Time.deltaTime, Space.Self);
     }
 }

@@ -100,9 +100,12 @@ public class ClothStack : Singleton<ClothStack>
 
     public void RemoveEndOfStack(Clothes cloth)
     {
-        stack.Remove(cloth);
-        Destroy(cloth.gameObject);
-        SetColliderEnabled();
+        if (cloth != null)
+        {
+            stack.Remove(cloth);
+            Destroy(cloth.gameObject);
+            SetColliderEnabled();
+        }
 
         if (EndgameController.Instance.endgameStart) OnConsumeStack(stack.Count);
     }
@@ -199,7 +202,7 @@ public class ClothStack : Singleton<ClothStack>
 
     public void OnConsumeStack(int stackCount)
     {
-        stack[stackCount].transform.DOKill();
+        StopAllCoroutines();
         ConsumeStack?.Invoke(stackCount);
     }
 }

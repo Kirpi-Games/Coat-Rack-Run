@@ -15,7 +15,7 @@ namespace Strategies.Girl
         [HideInInspector] public GirlTypes type;
         [HideInInspector] public HairId hairId;
         [HideInInspector] public Animator animator;
-        
+
         private static readonly int Cry = Animator.StringToHash("Cry");
         private static readonly int SadWalk = Animator.StringToHash("SadWalk");
         private static readonly int Dance = Animator.StringToHash("Dance");
@@ -24,14 +24,15 @@ namespace Strategies.Girl
 
         public void Move(Transform t)
         {
-            const float degree = 180f;
             var value = t.position.x;
-
-            t.DOMoveX(-value, 2f).OnComplete(() =>
-            {
-                t.DORotateQuaternion(Quaternion.Euler(0, t.rotation.y + degree, 0), 0.4f)
-                    .OnComplete(() => t.DOMoveX(t.position.x, 2f));
-            }).SetEase(Ease.Linear).SetLoops(-1, LoopType.Yoyo);
+            const float degree = 180f;
+            t.DOMoveX(-value, 2f).SetLoops(-1, LoopType.Yoyo)
+                .OnStepComplete(() =>
+                    t.DOLocalRotate(new Vector3(t.rotation.x, t.rotation.y + degree, t.rotation.z), 0.4f,
+                        RotateMode.LocalAxisAdd))
+                .OnComplete(() =>
+                    t.DOLocalRotate(new Vector3(t.rotation.x, t.rotation.y + degree, t.rotation.z), 0.4f,
+                        RotateMode.LocalAxisAdd));
         }
 
         #region Girl Animations
