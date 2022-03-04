@@ -8,11 +8,12 @@ namespace Strategies.Obstacle
         Fixed,
         Rotating,
     }
+
     public class Obstacle : MonoBehaviour
     {
         public ObstacleTypes type;
         private const float Angle = 180;
-        
+
         private void Start()
         {
             if (type is ObstacleTypes.Rotating)
@@ -25,10 +26,16 @@ namespace Strategies.Obstacle
             {
                 if (other.GetCloth().IsLast)
                 {
+                    Taptic.Medium();
+                    var particle = other.GetCloth().activeCloth.dressParticle;
+                    particle.transform.SetParent(MovementZ.Instance.transform);
+                    particle.Play();
+
                     ClothStack.Instance.RemoveEndOfStack(other.GetCloth());
                     return;
                 }
-                
+
+                Taptic.Heavy();
                 ClothStack.Instance.CutStack(other.GetCloth().id);
             }
         }

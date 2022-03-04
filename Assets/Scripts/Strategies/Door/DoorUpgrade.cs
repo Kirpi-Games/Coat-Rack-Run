@@ -12,7 +12,11 @@ namespace Strategies.Door
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.IsClothStack()) other.GetCloth().UpgradeCloth();
+            if (other.IsClothStack())
+            {
+                Taptic.Light();
+                other.GetCloth().UpgradeCloth();
+            }
         }
     }
 }

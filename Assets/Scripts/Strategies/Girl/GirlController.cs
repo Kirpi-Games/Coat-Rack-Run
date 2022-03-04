@@ -11,6 +11,7 @@ namespace Strategies.Girl
 
     public class GirlController : MonoBehaviour
     {
+        public ParticleSystem starProof;
         public HairId hairId;
         private NakedState state;
         private Collider col;
@@ -36,10 +37,12 @@ namespace Strategies.Girl
 
                 if (other.GetCloth().IsLast)
                 {
+                    Taptic.Light();
                     ClothStack.Instance.RemoveEndOfStack(other.GetCloth());
                     return;
                 }
 
+                Taptic.Heavy();
                 ClothStack.Instance.CutStack(other.GetCloth().id);
             }
         }
@@ -67,6 +70,8 @@ namespace Strategies.Girl
             dressed.gameObject.SetActive(true);
             dressed.SetCloth(type);
             dressed.SetHair();
+            starProof.transform.SetParent(MovementZ.Instance.transform);
+            starProof.Play();
             SetGirlAnim();
         }
 

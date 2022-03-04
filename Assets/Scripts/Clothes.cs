@@ -28,7 +28,11 @@ public class Clothes : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (col.IsCloth() && other.IsClothStack()) ClothStack.Instance.AddCloth(this);
+        if (col.IsCloth() && other.IsClothStack())
+        {
+            Taptic.Medium();
+            ClothStack.Instance.AddCloth(this);
+        }
     }
 
     public void UpgradeCloth()

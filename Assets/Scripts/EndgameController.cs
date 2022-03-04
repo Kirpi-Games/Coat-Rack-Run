@@ -38,6 +38,7 @@ public class EndgameController : Singleton<EndgameController>
 
         if (other.IsClothStack() && other.GetCloth() != null)
         {
+            Taptic.Light();
             ClothStack.Instance.RemoveEndOfStack(other.GetCloth());
             if (confettiCounter <= 15)
             {

@@ -12,4 +12,5 @@ public class ClothScript : MonoBehaviour
 {
     public ClothTypes type;
     public BoneActivator boneActivator;
+    public ParticleSystem dressParticle;
 }

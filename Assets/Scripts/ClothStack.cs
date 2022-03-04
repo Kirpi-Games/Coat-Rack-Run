@@ -33,7 +33,11 @@ public class ClothStack : Singleton<ClothStack>
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.IsCloth()) AddCloth(other.GetCloth());
+        if (other.IsCloth())
+        {
+            Taptic.Medium();
+            AddCloth(other.GetCloth());
+        }
     }
 
     private void LerpStack(float x)
