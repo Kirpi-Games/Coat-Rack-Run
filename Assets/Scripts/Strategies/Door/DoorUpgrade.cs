@@ -14,7 +14,7 @@ namespace Strategies.Door
         {
             if (other.IsClothStack())
             {
-                Taptic.Light();
+                Taptic.Medium();
                 other.GetCloth().UpgradeCloth();
             }
         }

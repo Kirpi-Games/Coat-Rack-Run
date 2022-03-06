@@ -38,7 +38,7 @@ namespace Strategies.Girl
 
                 if (other.GetCloth().IsLast)
                 {
-                    Taptic.Light();
+                    Taptic.Medium();
                     ClothStack.Instance.RemoveEndOfStack(other.GetCloth());
                     MoneyText.Instance.IncreaseMoney(GetAmountForGirlType(other.GetCloth().activeCloth.type));
                     return;
