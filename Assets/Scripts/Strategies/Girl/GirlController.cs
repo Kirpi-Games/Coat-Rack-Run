@@ -1,4 +1,5 @@
 using Akali.Scripts.Utilities;
+using Akali.Ui_Materials.Scripts.Components;
 using UnityEngine;
 
 namespace Strategies.Girl
@@ -18,7 +19,7 @@ namespace Strategies.Girl
         private GirlNaked naked;
         private GirlDressed dressed;
 
-        private void Awake()
+        private void Start()
         {
             col = gameObject.GetComponent<Collider>();
             naked = gameObject.GetComponentInChildren<GirlNaked>();
@@ -30,7 +31,7 @@ namespace Strategies.Girl
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.IsClothStack())
+            if (other.IsClothStack() && other.GetCloth() != null)
             {
                 col.enabled = false;
                 SetActiveDressed(other.GetCloth().activeCloth.type);
@@ -39,12 +40,25 @@ namespace Strategies.Girl
                 {
                     Taptic.Light();
                     ClothStack.Instance.RemoveEndOfStack(other.GetCloth());
+                    MoneyText.Instance.IncreaseMoney(GetAmountForGirlType(other.GetCloth().activeCloth.type));
                     return;
                 }
 
                 Taptic.Heavy();
                 ClothStack.Instance.CutStack(other.GetCloth().id);
             }
+        }
+
+        public static int GetAmountForGirlType(ClothTypes type)
+        {
+            return type switch
+            {
+                ClothTypes.Pyjama => 50,
+                ClothTypes.Casual => 75,
+                ClothTypes.Business => 100,
+                ClothTypes.Prom => 150,
+                _ => 50,
+            };
         }
 
         private void SetActiveNaked()

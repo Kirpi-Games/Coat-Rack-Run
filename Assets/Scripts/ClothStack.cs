@@ -196,10 +196,10 @@ public class ClothStack : Singleton<ClothStack>
     private IEnumerator CorScaleStack(Clothes cloth, int i)
     {
         if (stack.Count < 1) yield break;
-        yield return new WaitForSeconds(0.05f * (stack.Count - i));
+        yield return new WaitForSeconds(0.02f * (stack.Count - i));
 
-        cloth.transform.DOScale(cloth.startScale * 1.2f, 0.05f).SetEase(Ease.OutQuad)
-            .OnComplete(() => cloth.transform.DOScale(cloth.startScale, 0.05f)).SetEase(Ease.OutQuad);
+        cloth.transform.DOScale(cloth.startScale * 1.2f, 0.02f).SetEase(Ease.OutQuad)
+            .OnComplete(() => cloth.transform.DOScale(cloth.startScale, 0.02f)).SetEase(Ease.OutQuad);
     }
 
     #endregion
