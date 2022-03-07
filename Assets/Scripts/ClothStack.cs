@@ -12,14 +12,14 @@ using Random = UnityEngine.Random;
 public class ClothStack : Singleton<ClothStack>
 {
     public event Action<int> ConsumeStack;
-    
+
     public List<Clothes> stack = new List<Clothes>();
     private readonly List<Vector2> points = new List<Vector2>();
     private Collider col;
     [SerializeField] private Collider cutCollider;
 
     private void InvokeSetColliderEnabled() => Invoke(nameof(SetColliderEnabled), 0.2f);
-    
+
     private void SetColliderEnabled() => col.enabled = stack.Count < 1;
 
     private void Awake()
@@ -52,7 +52,7 @@ public class ClothStack : Singleton<ClothStack>
             return;
         }
 
-        transform.localPosition = new Vector3(0,0,2);
+        transform.localPosition = new Vector3(0, 0, 2);
         var first = stack.First();
         var localPos = first.transform.localPosition;
         localPos.x = x;
@@ -200,16 +200,17 @@ public class ClothStack : Singleton<ClothStack>
         if (stack.Count < 1) yield break;
         yield return new WaitForSeconds(0.04f * (stack.Count - i));
 
-        cloth.transform.DOScale(cloth.startScale * 1.2f, 0.04f).SetEase(Ease.OutQuad)
-            .OnComplete(() => cloth.transform.DOScale(cloth.startScale, 0.04f)).SetEase(Ease.OutQuad);
+        if (cloth != null) cloth.transform.DOScale(cloth.startScale * 1.2f, 0.04f).SetEase(Ease.OutQuad)
+                .OnComplete(() => cloth.transform.DOScale(cloth.startScale, 0.04f)).SetEase(Ease.OutQuad);
     }
 
     #endregion
 
     public void OnConsumeStack(int stackCount)
     {
-        for (var i = 0; i < stack.Count; i++) 
+        for (var i = 0; i < stack.Count; i++)
             stack[i].transform.localScale = stack[i].startScale;
+        
         StopAllCoroutines();
         ConsumeStack?.Invoke(stackCount);
     }

@@ -33,19 +33,18 @@ namespace Strategies.Girl
         {
             if (other.IsClothStack() && other.GetCloth() != null)
             {
-                col.enabled = false;
-                SetActiveDressed(other.GetCloth().activeCloth.type);
-
-                if (other.GetCloth().IsLast)
+                if (!other.GetCloth().IsLast)
                 {
-                    Taptic.Medium();
-                    ClothStack.Instance.RemoveEndOfStack(other.GetCloth());
-                    MoneyText.Instance.IncreaseMoney(GetAmountForGirlType(other.GetCloth().activeCloth.type));
+                    Taptic.Heavy();
+                    ClothStack.Instance.CutStack(other.GetCloth().id);
                     return;
                 }
 
-                Taptic.Heavy();
-                ClothStack.Instance.CutStack(other.GetCloth().id);
+                col.enabled = false;
+                Taptic.Medium();
+                SetActiveDressed(other.GetCloth().activeCloth.type);
+                ClothStack.Instance.RemoveEndOfStack(other.GetCloth());
+                MoneyText.Instance.IncreaseMoney(GetAmountForGirlType(other.GetCloth().activeCloth.type));
             }
         }
 
