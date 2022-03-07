@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Clothes : MonoBehaviour
 {
+    public ParticleSystem starExplosion;
     [HideInInspector] public Collider col;
     [HideInInspector] public ClothScript activeCloth;
     [HideInInspector] public List<ClothScript> subClothes = new();

@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Strategies.Door
@@ -12,10 +11,11 @@ namespace Strategies.Door
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.IsClothStack())
+            if (other.IsClothStack() && other.GetCloth() != null)
             {
                 Taptic.Medium();
                 other.GetCloth().UpgradeCloth();
+                other.GetCloth().starExplosion.Play();
             }
         }
     }

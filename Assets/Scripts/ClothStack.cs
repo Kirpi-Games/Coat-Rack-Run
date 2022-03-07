@@ -18,6 +18,8 @@ public class ClothStack : Singleton<ClothStack>
     private Collider col;
     [SerializeField] private Collider cutCollider;
 
+    private void InvokeSetColliderEnabled() => Invoke(nameof(SetColliderEnabled), 0.2f);
+    
     private void SetColliderEnabled() => col.enabled = stack.Count < 1;
 
     private void Awake()
@@ -79,7 +81,7 @@ public class ClothStack : Singleton<ClothStack>
             cloth.transform.parent = transform;
             cloth.transform.position = transform.position;
             cloth.SetLayer();
-            SetColliderEnabled();
+            InvokeSetColliderEnabled();
             stack.Add(cloth);
             SetClothId();
             ScaleStack();
@@ -108,7 +110,7 @@ public class ClothStack : Singleton<ClothStack>
         {
             stack.Remove(cloth);
             Destroy(cloth.gameObject);
-            SetColliderEnabled();
+            InvokeSetColliderEnabled();
         }
 
         if (EndgameController.Instance.endgameStart) OnConsumeStack(stack.Count);
@@ -148,7 +150,7 @@ public class ClothStack : Singleton<ClothStack>
             }));
         }
 
-        SetColliderEnabled();
+        InvokeSetColliderEnabled();
     }
 
     private void SetVirtualPoints(int count)
@@ -196,16 +198,18 @@ public class ClothStack : Singleton<ClothStack>
     private IEnumerator CorScaleStack(Clothes cloth, int i)
     {
         if (stack.Count < 1) yield break;
-        yield return new WaitForSeconds(0.02f * (stack.Count - i));
+        yield return new WaitForSeconds(0.04f * (stack.Count - i));
 
-        cloth.transform.DOScale(cloth.startScale * 1.2f, 0.02f).SetEase(Ease.OutQuad)
-            .OnComplete(() => cloth.transform.DOScale(cloth.startScale, 0.02f)).SetEase(Ease.OutQuad);
+        cloth.transform.DOScale(cloth.startScale * 1.2f, 0.04f).SetEase(Ease.OutQuad)
+            .OnComplete(() => cloth.transform.DOScale(cloth.startScale, 0.04f)).SetEase(Ease.OutQuad);
     }
 
     #endregion
 
     public void OnConsumeStack(int stackCount)
     {
+        for (var i = 0; i < stack.Count; i++) 
+            stack[i].transform.localScale = stack[i].startScale;
         StopAllCoroutines();
         ConsumeStack?.Invoke(stackCount);
     }
