@@ -5,7 +5,7 @@ namespace Strategies.Girl
 {
     public class GirlNaked : GirlBase
     {
-        [HideInInspector] public List<Hairs> hairs = new();
+        [HideInInspector] public List<Hairs> hairs = new List<Hairs>();
         
         private void Awake()
         {

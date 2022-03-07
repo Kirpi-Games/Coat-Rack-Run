@@ -13,8 +13,8 @@ public class ClothStack : Singleton<ClothStack>
 {
     public event Action<int> ConsumeStack;
     
-    public List<Clothes> stack = new();
-    private readonly List<Vector2> points = new();
+    public List<Clothes> stack = new List<Clothes>();
+    private readonly List<Vector2> points = new List<Vector2>();
     private Collider col;
     [SerializeField] private Collider cutCollider;
 

@@ -20,21 +20,21 @@ namespace Akali.Scripts.Managers
         {
             GameStateManager.Instance.SetGameState(GameStateManager.Instance.GameStatePlaying);
             Taptic.Light();
-            //TinySauce.OnGameStarted(PlayerPrefs.GetLevelText().ToString());
+            TinySauce.OnGameStarted(PlayerPrefs.GetLevelText().ToString());
         }
 
         public void LevelIsCompleted()
         {
             GameStateManager.Instance.SetGameState(GameStateManager.Instance.GameStateComplete);
             Taptic.Success();
-            //TinySauce.OnGameFinished(true, PlayerPrefs.GetMoney(), PlayerPrefs.GetLevelText().ToString());
+            TinySauce.OnGameFinished(true, PlayerPrefs.GetMoney(), PlayerPrefs.GetLevelText().ToString());
         }
 
         public void LevelIsFail()
         {
             GameStateManager.Instance.SetGameState(GameStateManager.Instance.GameStateFail);
             Taptic.Failure();
-            //TinySauce.OnGameFinished(false, PlayerPrefs.GetMoney(), PlayerPrefs.GetLevelText().ToString());
+            TinySauce.OnGameFinished(false, PlayerPrefs.GetMoney(), PlayerPrefs.GetLevelText().ToString());
         }
     }
 }

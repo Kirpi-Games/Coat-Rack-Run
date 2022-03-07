@@ -7,7 +7,7 @@ public class Clothes : MonoBehaviour
     public ParticleSystem starExplosion;
     [HideInInspector] public Collider col;
     [HideInInspector] public ClothScript activeCloth;
-    [HideInInspector] public List<ClothScript> subClothes = new();
+    [HideInInspector] public List<ClothScript> subClothes = new List<ClothScript>();
     [HideInInspector] public int id = -1;
     [HideInInspector] public Vector3 startScale;
 
