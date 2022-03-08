@@ -42,7 +42,7 @@ namespace Strategies.Girl
 
                 col.enabled = false;
                 Taptic.Medium();
-                SetActiveDressed(other.GetCloth().activeCloth.type);
+                SetActiveDressed(other.GetCloth().activeCloth.type, other.GetCloth().activeCloth.level);
                 ClothStack.Instance.RemoveEndOfStack(other.GetCloth());
                 MoneyText.Instance.IncreaseMoney(GetAmountForGirlType(other.GetCloth().activeCloth.type));
             }
@@ -77,11 +77,11 @@ namespace Strategies.Girl
             SetGirlAnim(true);
         }
 
-        public void SetActiveDressed(ClothTypes type)
+        public void SetActiveDressed(ClothTypes type, ClothLevel level)
         {
             naked.gameObject.SetActive(false);
             dressed.gameObject.SetActive(true);
-            dressed.SetCloth(type);
+            dressed.SetCloth(type, level);
             dressed.SetHair();
             starProof.transform.SetParent(MovementZ.Instance.transform);
             starProof.Play();

@@ -16,11 +16,11 @@ namespace Strategies.Girl
             gameObject.GetComponentsInChildren(hairs);
         }
 
-        public void SetCloth(ClothTypes clothType)
+        public void SetCloth(ClothTypes clothType, ClothLevel clothLevel)
         {
             for (var i = 0; i < girlCloths.Count; i++)
             {
-                if (girlCloths[i].type != clothType) 
+                if (girlCloths[i].type != clothType || girlCloths[i].level != clothLevel) 
                     girlCloths[i].gameObject.SetActive(false);
             }
         }
